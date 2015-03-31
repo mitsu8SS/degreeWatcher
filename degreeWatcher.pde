@@ -1,3 +1,5 @@
+//speed is deg*time[ms]
+int speed=3;
 int width =1000;
 int height = 500;
 int x=1;
@@ -9,8 +11,10 @@ boolean flag;
 boolean flag2;
 int count=0;
 int data=0;
+boolean change;
 void setup()
 {
+  change=false;
   size(width,height);
   background(255);
   setMemory();
@@ -28,9 +32,13 @@ void draw()
   
   y = readData();
   data=data+(y-data)/2;
-  
-  //ProtPoint(x,height/2-data);
+  delay(speed*abs((y-data)/2));
+  if(change==true){
+    setMemory(); 
+  ProtPoint(x,height/2-data);
+  }else{
   demoMode(data);
+  }
   if(x==width){
     background(255);
     setMemory();
@@ -75,7 +83,7 @@ void setMemory()
   line(0,height/3,width,height/3);
   line(0,height/6,width,height/6);
   line(0,2*height/3,width,2*height/3);
-  line(0,5*height/6,500,5*height/6);
+  line(0,5*height/6,width,5*height/6);
 }
 
 int readData()
@@ -88,4 +96,15 @@ int readData()
   }
   
   return(aa[count/10]);
+}
+
+void keyPressed() {
+  if (key == 'A' || key == 'a') {          // Tabキーに反応
+    change=true;
+    background(255);
+    
+  }  else if (key == 'B' || key == 'b') {  // Aキーに反応
+    change=false;
+    background(255);
+  }
 }
