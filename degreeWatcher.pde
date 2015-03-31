@@ -1,9 +1,13 @@
 int defaultP = 150;
   int x=1;
   int y=150;
-    int abuf;
+  int y2=150;
+  int abuf;
   int bbuf;
   boolean flag;
+  boolean flag2;
+  int count=0;
+  int data=0;
 void setup()
 {
   size(500,300);
@@ -11,30 +15,50 @@ void setup()
   setMemory();
   abuf=0;
   bbuf=0;
+  flag2=false;
 }
 
 void draw()
 {
+  //
   x=x+1;
   if(x>500)
   {
     x=1;
   }
   y = readData();
-  ProtPoint(x,y);
+  if(flag2==false){
+  }
+  data=data+(y-data)/2;
+  
+  //ProtPoint(x,150-data);
+  demoMode(data);
   if(x==500){
     background(255);
     setMemory();
     flag=false;
   }
+  flag2=true;
+}
+
+void demoMode(int data)
+{
+    
+  stroke(0);
+  translate(250, 150);
+  rotate((float)data/180*PI); 
+  ellipseMode( CENTER );
+  background(255);
+  
+  ellipse(0, 0, 250, 50); 
+  ellipse(80,0,20,20);
+  ellipse(0,0,5,5);
+  
 }
 
 void ProtPoint(int a,int b)
 {
   stroke(255,0,0);
-  //point(a,b);
-  
-  delay(10);
   if(flag==true )
   {
     line(abuf,bbuf,a,b);
@@ -56,11 +80,15 @@ void setMemory()
 
 int readData()
 {
-  int aa[]={10,20,30,40,50,60,70,80,90,100};
+  int aa[]={-90,-70,-50,-30,-10,10,30,50,70,90};
   int bb[]={100,90,80,70,60,50,40,30,20,10};
-  
+  count++;
   int rand1=(int)random(10);
   int rand2 =(int)random(10);
+  if(count>=100)
+  {
+    count=0;
+  }
   
-  return(150-aa[rand1]);
+  return(aa[count/10]);
 }
