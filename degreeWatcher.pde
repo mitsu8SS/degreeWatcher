@@ -81,10 +81,7 @@ void setMemory()
 int readData()
 {
   int aa[]={-90,-70,-50,-30,-10,10,30,50,70,90};
-  int bb[]={100,90,80,70,60,50,40,30,20,10};
   count++;
-  int rand1=(int)random(10);
-  int rand2 =(int)random(10);
   if(count>=100)
   {
     count=0;
