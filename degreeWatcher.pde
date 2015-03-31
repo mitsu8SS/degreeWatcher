@@ -90,12 +90,12 @@ int readData()
 {
   int aa[]={-90,-70,-50,-30,-10,10,30,50,70,90};
   count++;
-  if(count>=100)
+  if(count>=1000)
   {
     count=0;
   }
   
-  return(aa[count/10]);
+  return(aa[count/100]);
 }
 
 void keyPressed() {
