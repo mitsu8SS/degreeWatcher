@@ -66,7 +66,7 @@ void demoMode(int data)
 
 void ProtPoint(int a,int b)
 {
-  stroke(255,0,0);
+  stroke(192, 57, 43);
   if(flag==true )
   {
     line(abuf,bbuf,a,b);
